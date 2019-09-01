@@ -60,7 +60,7 @@ func main() {
 	var sourceStorage, targetStorage storage.Storage
 	switch cli.Source.Type {
 	case storage.TypeS3:
-		sourceStorage = storage.NewS3Storage(cli.SourceKey, cli.SourceSecret, cli.SourceRegion, cli.SourceEndpoint,
+		sourceStorage = storage.NewS3Storage(cli.SourceKey, cli.SourceSecret, cli.SourceToken, cli.SourceRegion, cli.SourceEndpoint,
 			cli.Source.Bucket, cli.Source.Path, cli.S3KeysPerReq, cli.S3Retry, cli.S3RetryInterval,
 		)
 	case storage.TypeFS:
@@ -69,7 +69,7 @@ func main() {
 
 	switch cli.Target.Type {
 	case storage.TypeS3:
-		targetStorage = storage.NewS3Storage(cli.TargetKey, cli.TargetSecret, cli.TargetRegion, cli.TargetEndpoint,
+		targetStorage = storage.NewS3Storage(cli.TargetKey, cli.TargetSecret, cli.TargetToken, cli.TargetRegion, cli.TargetEndpoint,
 			cli.Target.Bucket, cli.Target.Path, cli.S3KeysPerReq, cli.S3Retry, cli.S3RetryInterval,
 		)
 	case storage.TypeFS:

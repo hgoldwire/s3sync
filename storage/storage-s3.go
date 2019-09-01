@@ -34,7 +34,7 @@ type S3Storage struct {
 // NewS3Storage return new configured S3 storage.
 //
 // You should always create new storage with this constructor.
-func NewS3Storage(awsAccessKey, awsSecretKey, awsRegion, endpoint, bucketName, prefix string, keysPerReq int64, retryCnt uint, retryInterval time.Duration) *S3Storage {
+func NewS3Storage(awsAccessKey, awsSecretKey, awsToken, awsRegion, endpoint, bucketName, prefix string, keysPerReq int64, retryCnt uint, retryInterval time.Duration) *S3Storage {
 	sess := session.Must(session.NewSession())
 
 	sess.Config.S3ForcePathStyle = aws.Bool(true)
@@ -42,7 +42,7 @@ func NewS3Storage(awsAccessKey, awsSecretKey, awsRegion, endpoint, bucketName, p
 	sess.Config.Region = aws.String(awsRegion)
 
 	if awsAccessKey != "" && awsSecretKey != "" {
-		cred := credentials.NewStaticCredentials(awsAccessKey, awsSecretKey, "")
+		cred := credentials.NewStaticCredentials(awsAccessKey, awsSecretKey, awsToken)
 		sess.Config.WithCredentials(cred)
 	} else {
 		cred := credentials.NewChainCredentials(

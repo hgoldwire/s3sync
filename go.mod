@@ -3,7 +3,7 @@ module github.com/larrabee/s3sync
 go 1.12
 
 require (
-	git.wsmgroup.ru/go-modules/utils v0.0.0-20190726124220-1b232377af20 // indirect
+	//git.wsmgroup.ru/go-modules/utils v0.0.0-20190726124220-1b232377af20 // indirect
 	github.com/alexflint/go-arg v1.0.0
 	github.com/aws/aws-sdk-go v1.20.6
 	github.com/gosuri/uilive v0.0.3
